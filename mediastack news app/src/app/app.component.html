@@ -1,0 +1,75 @@
+<head>
+  <meta name="description" content="Shows New York Times News API data" />
+</head>
+
+<div class="contain">
+  <h1 class="mt-2 text-center">
+    <strong>Mediastack News</strong>
+  </h1>
+
+  <div class="buttons-wrapper">
+    <div class="buttons">
+      <span class="buttons-text">Pick a cathegory: </span>
+      <button class="button" (click)="switchCategorie('sports')">sports</button>
+
+      <button class="button" (click)="switchCategorie('technology')">
+        technology
+      </button>
+    </div>
+
+    <div class="buttons order-by">
+      <span class="buttons-text"> Order by: </span>
+      <select name="order" id="order" (change)="setSort($event)">
+        <option value="published_desc">Newest</option>
+        <option value="published_asc">Oldest</option>
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <form>
+      <input
+        class="search-field"
+        type="text"
+        name="search-text"
+        aria-describedby="search-text"
+        [(ngModel)]="searchText"
+        placeholder="Enter title to search"
+        autofocus
+      />
+    </form>
+  </div>
+  <br />
+  <div
+    *ngFor="
+      let info of infoObject
+        | async
+        | appFilter: searchText
+        | paginate: { itemsPerPage: 10, currentPage: curPage }
+    "
+  >
+    <div class="card">
+      <img [src]="info.image" alt="image" class="image" />
+      <h3 class="news-title">
+        {{ info.title }}
+      </h3>
+      <div class="card-body">
+        <p class="card-text">
+          {{ info.description }}...
+          <a [href]="info.url" target="_blank">link to article</a>
+        </p>
+        <p class="card-text">
+          <span class="badge badge-cat"> Cathegory: {{ info.category }} </span>
+          <span class="badge badge-date">
+            Date: {{ info.published_at | date }}
+          </span>
+          <span class="badge badge-author">Author: {{ info.author }} </span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <pagination-controls
+    (pageChange)="curPage = $event"
+    class="paginate"
+  ></pagination-controls>
+</div>

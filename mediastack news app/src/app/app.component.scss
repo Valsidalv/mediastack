@@ -1,0 +1,108 @@
+$text-padding: 15px;
+$text-color: white;
+$radius: 10px;
+$grey-text: #455a64;
+$font-face: "Lucida Sans", Arial, sans-serif;
+
+.contain {
+  width: 50%;
+  margin: auto;
+}
+
+h1,
+.buttons-text {
+  color: $grey-text;
+  font-family: $font-face;
+  text-align: center;
+}
+
+.buttons-text {
+  font-size: 17px;
+}
+
+.buttons-wrapper {
+  margin: 30px 0;
+
+  .buttons {
+    display: inline-block;
+
+    .button {
+      background-color: royalblue;
+      padding: 7px 9px;
+      margin: 5px;
+      color: $text-color;
+      border-radius: $radius;
+      box-shadow: none;
+    }
+  }
+
+  .order-by {
+    margin-left: 20px;
+    float: right;
+  }
+
+  select {
+    background-color: royalblue;
+    border-radius: $radius;
+    border: none;
+    color: $text-color;
+    padding: 9px;
+  }
+}
+
+.search-field {
+  padding: 6px;
+  border-radius: $radius;
+}
+
+.card {
+  margin: 20px 0 50px;
+  border: 1px solid grey;
+  border-radius: $radius;
+
+  .image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .card-body {
+    padding: $text-padding;
+  }
+
+  .news-title {
+    margin: 20px 15px -30px;
+    padding: $text-padding;
+    font-family: $font-face;
+  }
+
+  .card-text {
+    padding: $text-padding;
+    font-family: $font-face;
+  }
+
+  .badge {
+    color: white;
+    border-radius: $radius;
+    margin-right: 10px;
+    padding: 7px;
+    font-family: $font-face;
+    font-size: 14px;
+  }
+
+  .badge-cat {
+    background-color: green;
+  }
+
+  .badge-date {
+    background-color: royalblue;
+  }
+
+  .badge-author {
+    background-color: grey;
+  }
+}
+
+.paginate {
+  font-family: $font-face;
+}
